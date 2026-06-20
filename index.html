@@ -6,124 +6,188 @@
     <title>TUF CS Digital Resource Center</title>
     <style>
         :root {
-            --primary-color: #0d47a1;
-            --secondary-color: #1565c0;
-            --bg-color: #f4f6f9;
+            --bg-color: #f8fafc;
+            --text-color: #1e293b;
+            --header-bg: #0f4c81;
+            --header-text: #ffffff;
             --card-bg: #ffffff;
-            --text-color: #333333;
+            --card-border: #e2e8f0;
+            --accent-color: #1d4ed8;
+            --accent-hover: #1e40af;
+            --search-bg: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --text-color: #f1f5f9;
+            --header-bg: #1e293b;
+            --header-text: #f8fafc;
+            --card-bg: #1e293b;
+            --card-border: #334155;
+            --accent-color: #3b82f6;
+            --accent-hover: #60a5fa;
+            --search-bg: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-color);
-            margin: 0;
-            padding: 0;
             color: var(--text-color);
-            text-align: left;
+            line-height: 1.6;
+            padding-bottom: 60px;
         }
 
         header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            text-align: left;
-            padding: 40px 40px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            text-align: center;
+            padding: 2.5rem 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
         }
 
         header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            letter-spacing: 1px;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
         }
 
         header p {
-            margin: 10px 0 0 0;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid var(--header-text);
+            color: var(--header-text);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
 
         .container {
             max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 40px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
         }
 
-        .section-title {
-            font-size: 1.8rem;
-            color: var(--primary-color);
-            border-bottom: 3px solid var(--primary-color);
-            padding-bottom: 10px;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            text-align: left;
+        .search-container {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .search-bar {
+            width: 100%;
+            max-width: 600px;
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--card-border);
+            border-radius: 50px;
+            background-color: var(--search-bg);
+            color: var(--text-color);
+            font-size: 1rem;
+            outline: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .search-bar:focus {
+            border-color: var(--accent-color);
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        section h2 {
+            font-size: 1.6rem;
+            border-bottom: 2px solid var(--card-border);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-style: italic;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 25px;
-            text-align: left;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
 
         .card {
             background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-top: 5px solid var(--accent-color);
             border-radius: 8px;
-            padding: 25px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 1.5rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            border-top: 4px solid var(--secondary-color);
-            text-align: left;
-            min-height: 180px;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
         }
 
         .card h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.3rem;
-            color: #111;
-            text-align: left;
+            font-size: 1.25rem;
+            color: var(--accent-color);
+            margin-bottom: 0.75rem;
         }
 
         .card p {
-            margin: 0 0 20px 0;
             font-size: 0.95rem;
-            color: #666;
-            line-height: 1.5;
-            text-align: left;
+            margin-bottom: 1.5rem;
+            opacity: 0.85;
         }
 
-        .btn {
-            display: inline-block;
-            background-color: var(--primary-color);
+        .btn-search {
+            background-color: var(--accent-color);
             color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            width: fit-content;
             text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 5px;
             text-align: center;
+        }
+
+        .btn-search:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--accent-color);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
             font-weight: bold;
-            font-size: 0.9rem;
-            transition: background-color 0.2s ease;
-            margin-top: auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 100;
         }
 
-        .btn:hover {
-            background-color: #0a3375;
-        }
-
-        footer {
-            text-align: left;
-            padding: 30px 40px;
-            margin-top: 60px;
-            background-color: #222;
-            color: #999;
-            font-size: 0.9rem;
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.6rem; }
+            .grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -132,134 +196,188 @@
     <header>
         <h1>The University of Faisalabad (TUF)</h1>
         <p>Department of Computer Science - Digital Resource Center</p>
+        <button class="theme-toggle" id="themeToggle">🌙 Night Mode</button>
     </header>
 
     <div class="container">
-
-        <!-- Section 1: Research Papers & Journals -->
-        <div class="section-title">Research Papers & Journals (Open Access)</div>
-        <div class="grid">
-            <div class="card">
-                <div>
-                    <h3>arXiv.org (CS)</h3>
-                    <p>The largest repository for modern AI, Machine Learning, Data Science, and core Computer Science pre-prints and latest papers.</p>
-                </div>
-                <a href="https://arxiv.org" target="_blank" class="btn">Access arXiv</a>
-            </div>
-
-            <div class="card">
-                <div>
-                    <h3>DOAJ</h3>
-                    <p>Directory of Open Access Journals. High-quality, peer-reviewed, open access tech journals without subscription barriers.</p>
-                </div>
-                <a href="https://doaj.org" target="_blank" class="btn">Explore DOAJ</a>
-            </div>
-
-            <div class="card">
-                <div>
-                    <h3>IEEE Access (Open)</h3>
-                    <p>IEEE's official gold open-access multidisciplinary journal publishing high-quality research across computing and electronics.</p>
-                </div>
-                <a href="https://ieee.org" target="_blank" class="btn">Access IEEE Open</a>
-            </div>
-
-            <div class="card">
-                <div>
-                    <h3>ScienceDirect</h3>
-                    <p>Elsevier's leading platform. Pre-filtered link to instantly search and download free, full-text open access computer science articles.</p>
-                </div>
-                <a href="https://sciencedirect.com" target="_blank" class="btn">Search Papers</a>
-            </div>
-
-            <div class="card">
-                <div>
-                    <h3>CORE</h3>
-                    <p>Connecting Repositories. The world's largest aggregator of open access research papers and academic theses from global universities.</p>
-                </div>
-                <a href="https://core.ac.uk" target="_blank" class="btn">Search CORE</a>
-            </div>
-
-            <div class="card">
-                <div>
-                    <h3>CiteSeerX</h3>
-                    <p>A scientific literature digital library and search engine focusing primarily on literature in computer and information science.</p>
-                </div>
-                <a href="https://psu.edu" target="_blank" class="btn">Search CiteSeerX</a>
-            </div>
-
-            <div class="card">
-                <div>
-                    <h3>dblp bibliography</h3>
-                    <p>Open access bibliographic service providing comprehensive data on computer science journals and major global conferences.</p>
-                </div>
-                <a href="https://dblp.org" target="_blank" class="btn">Open dblp Index</a>
-            </div>
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="Search databases...">
         </div>
 
-        <!-- Section 2: Free E-Books & Textbooks -->
-        <div class="section-title">Free E-Books & Textbooks</div>
-        <div class="grid">
-            <div class="card">
-                <div>
-                    <h3>Open Textbook Library</h3>
-                    <p>University of Minnesota's peer-reviewed open textbook database cataloged by accredited global faculty boards.</p>
+        <section>
+            <h2>Research Papers & Journals (Open Access)</h2>
+            <div class="grid">
+                <div class="card">
+                    <div>
+                        <h3>ScienceDirect Open Access</h3>
+                        <p>Elsevier's premium open access collection. Instant search for peer-reviewed Computer Science research articles without paywalls.</p>
+                    </div>
+                    <button class="btn-search">Search</button>
                 </div>
-                <a href="https://umn.edu" target="_blank" class="btn">Access Open Textbooks</a>
-            </div>
-
-            <div class="card">
-                <div>
-                    <h3>Open Learning Initiative (CMU)</h3>
-                    <p>Carnegie Mellon University's portal offering open computational learning materials, system notes, and textbooks.</p>
+                <div class="card">
+                    <div>
+                        <h3>Wiley Open Access</h3>
+                        <p>Wiley's official gold open access repository publishing high-impact journals in computer systems, computing models, and software engineering.</p>
+                    </div>
+                    <button class="btn-search">Search</button>
                 </div>
-                <a href="https://cmu.edu" target="_blank" class="btn">Explore CMU OLI</a>
-            </div>
-
-            <div class="card">
-                <div>
-                    <h3>OpenStax (Computer Science)</h3>
-                    <p>Peer-reviewed, openly licensed textbooks covering introductory programming, college computing courses, and tech assets.</p>
+                <div class="card">
+                    <div>
+                        <h3>Emerald Open Access</h3>
+                        <p>Access high-quality peer-reviewed research papers and journals focusing on information systems, tech innovations, and management.</p>
+                    </div>
+                    <button class="btn-search">Search</button>
                 </div>
-                <a href="https://openstax.org" target="_blank" class="btn">Explore OpenStax</a>
-            </div>
-
-            <div class="card">
-                <div>
-                    <h3>Project Gutenberg</h3>
-                    <p>A massive online repository of completely free digitized books and foundational computational literature available globally.</p>
+                <div class="card">
+                    <div>
+                        <h3>arXiv.org (CS)</h3>
+                        <p>The largest repository for modern AI, Machine Learning, Data Science, and core Computer Science pre-prints and latest papers.</p>
+                    </div>
+                    <button class="btn-search">Search</button>
                 </div>
-                <a href="https://gutenberg.org" target="_blank" class="btn">Open Gutenberg</a>
-            </div>
-
-            <div class="card">
-                <div>
-                    <h3>Bookboon (IT Collection)</h3>
-                    <p>Textbooks structured precisely for higher education engineering students covering programming frameworks and systems.</p>
+                <div class="card">
+                    <div>
+                        <h3>DOAJ</h3>
+                        <p>Directory of Open Access Journals. High-quality peer-reviewed tech journals without subscription barriers.</p>
+                    </div>
+                    <button class="btn-search">Search</button>
                 </div>
-                <a href="https://bookboon.com" target="_blank" class="btn">Open Bookboon</a>
             </div>
+        </section>
 
-            <div class="card">
-                <div>
-                    <h3>Wikibooks (Computer Science)</h3>
-                    <p>Wikimedia's collaborative open-content open access textbook catalog for hardware configurations and coding theory.</p>
+        <section>
+            <h2>Free E-Books & Textbooks</h2>
+            <div class="grid">
+                <div class="card">
+                    <div>
+                        <h3>O'Reilly Open Books</h3>
+                        <p>Curated compilation of openly licensed and classic technology books from O'Reilly Media covering software systems and programming.</p>
+                    </div>
+                    <button class="btn-search">Search</button>
                 </div>
-                <a href="https://wikibooks.org" target="_blank" class="btn">Browse Wikibooks</a>
-            </div>
-
-            <div class="card">
-                <div>
-                    <h3>O'Reilly Open Books</h3>
-                    <p>Openly available books and technical chapters cataloged by O'Reilly Media covering foundational computing principles.</p>
+                <div class="card">
+                    <div>
+                        <h3>Bookboon IT Collection</h3>
+                        <p>Provides focused text-books written by professors worldwide covering core IT, engineering, computing, and coding assets.</p>
+                    </div>
+                    <button class="btn-search">Search</button>
                 </div>
-                <a href="https://oreilly.com" target="_blank" class="btn">Open O'Reilly Catalog</a>
-            </div>
-
-            <div class="card">
-                <div>
-                    <h3>Internet Archive (Books)</h3>
-                    <p>Millions of free digital books, computing manuals, and historic tech publications available via the open digital library platform.</p>
+                <div class="card">
+                    <div>
+                        <h3>Wikibooks Computer Science</h3>
+                        <p>A community-driven database of open textbooks, offering detailed open guides on programming languages.</p>
+                    </div>
+                    <button class="btn-search">Search</button>
                 </div>
-                <a href="https://archive.org" target="_blank" class="btn">Search Archive Books</a>
+                <div class="card">
+                    <div>
+                        <h3>Internet Archive Books</h3>
+                        <p>A massive digital library containing millions of free books, archived computational literature, and foundational computer texts.</p>
+                    </div>
+                    <button class="btn-search">Search</button>
+                </div>
+                <div class="card">
+                    <div>
+                        <h3>Open Textbook Library</h3>
+                        <p>University of Minnesota's peer-reviewed open textbook database cataloged by accredited global faculty boards.</p>
+                    </div>
+                    <button class="btn-search">Search</button>
+                </div>
+                <div class="card">
+                    <div>
+                        <h3>Open Learning Initiative (CMU)</h3>
+                        <p>Carnegie Mellon University's portal offering open computational learning materials, system notes, and textbooks.</p>
+                    </div>
+                    <button class="btn-search">Search</button>
+                </div>
+                <div class="card">
+                    <div>
+                        <h3>OpenStax (Computer Science)</h3>
+                        <p>Peer-reviewed, openly licensed textbooks covering introductory programming, college computing courses, and tech assets.</p>
+                    </div>
+                    <button class="btn-search">Search</button>
+                </div>
+                <div class="card">
+                    <div>
+                        <h3>LibreTexts Computer Science</h3>
+                        <p>A massive open education resource offering multi-disciplinary, highly interactive digital text-books and learning tools.</p>
+                    </div>
+                    <button class="btn-search">Search</button>
+                </div>
+                <div class="card">
+                    <div>
+                        <h3>DOAB (Open Books)</h3>
+                        <p>Directory of Open Access Books. A searchable repository hosting thousands of peer-reviewed, academic e-books.</p>
+                    </div>
+                    <button class="btn-search">Search</button>
+                </div>
+                <div class="card">
+                    <div>
+                        <h3>SpringerOpen Books</h3>
+                        <p>High-quality academic books published by Springer, fully available online for computer science and technical students.</p>
+                    </div>
+                    <button class="btn-search">Search</button>
+                </div>
+                <div class="card">
+                    <div>
+                        <h3>Project Gutenberg</h3>
+                        <p>A massive online repository of completely free digitized books and foundational computational literature available globally.</p>
+                    </div>
+                    <button class="btn-search">Search</button>
+                </div>
+                <div class="card">
+                    <div>
+                        <h3>IntechOpen Books</h3>
+                        <p>Specialized open access textbooks in Cybersecurity, Robotics, Software Engineering, and Artificial Intelligence.</p>
+                    </div>
+                    <button class="btn-search">Search</button>
+                </div>
             </div>
+        </section>
 
+        <section>
+            <h2>Academic Search & Academic Networks</h2>
+            <div class="grid">
+                <div class="card">
+                    <div>
+                        <h3>Semantic Scholar</h3>
+                        <p>An AI-powered research tool for computer science that highlights key papers, citations, and structural connections between technical topics.</p>
+                    </div>
+                    <button class="btn-search">Search</button>
+                </div>
+                <div class="card">
+                    <div>
+                        <h3>Google Scholar</h3>
+                        <p>The standard academic search engine. Check the right-side [PDF] links next to papers for instant free downloads.</p>
+                    </div>
+                    <button class="btn-search">Search</button>
+                </div>
+                <div class="card">
+                    <div>
+                        <h3>ResearchGate</h3>
+                        <p>Connect with global computer scientists. Directly request full-text or download free pre-prints from the authors.</p>
+                    </div>
+                    <button class="btn-search">Search</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <a href="#" class="scroll-to-top">↑</a>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                themeToggle.innerHTML = '🌙 Night Mode';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeToggle.innerHTML = '☀️ Light Mode';
+            }
+        });
+    </script>
+</body>
+</html>
