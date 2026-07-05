@@ -3,106 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TUF Digital Resource Center</title>
+    <title>TUF CS Digital Resource Center</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
             background-color: #f4f6f9;
-            color: #333;
+            padding: 30px;
             margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
+            color: #333;
         }
-        .container {
-            max-width: 600px;
-            width: 100%;
+        .resource-container {
+            max-width: 1000px;
+            margin: 0 auto;
         }
         h1 {
-            color: #003366;
-            font-size: 24px;
+            color: #1a3673;
             margin-bottom: 5px;
+            font-size: 28px;
         }
         h2 {
-            font-size: 14px;
-            color: #555;
-            margin-top: 0;
-            margin-bottom: 25px;
-            font-weight: normal;
-        }
-        h3 {
-            color: #2b6cb0;
             font-size: 18px;
-            margin-top: 25px;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 8px;
-        }
-        .search-box {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            border-top: 4px solid #003366;
-            margin-bottom: 25px;
-        }
-        .search-box label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 8px;
             color: #333;
+            margin-top: 0;
+            margin-bottom: 24px;
+            font-weight: 600;
         }
-        .search-box input {
+        .search-container {
+            background-color: #ffffff;
+            border: 2px solid #1a3673;
+            border-radius: 6px;
+            padding: 20px 24px;
+            margin-bottom: 40px;
+        }
+        .search-container label {
+            font-weight: bold;
+            color: #1a3673;
+            display: block;
+            margin-bottom: 12px;
+        }
+        .search-container input[type="text"] {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #cbd5e0;
+            padding: 12px;
+            border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
-            font-size: 14px;
-        }
-        .card {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            border-left: 4px solid #2b6cb0;
-            margin-bottom: 15px;
-        }
-        .card h4 {
-            color: #2b6cb0;
-            margin: 0 0 10px 0;
             font-size: 16px;
         }
+        .section-title {
+            color: #2a52be;
+            font-size: 22px;
+            font-weight: bold;
+            border-bottom: 2px solid #d1d9e6;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background-color: #ffffff;
+            border: 2px solid #2a52be;
+            border-radius: 6px;
+            padding: 20px 24px;
+            display: flex;
+            flex-direction: column;
+        }
+        .card h3 {
+            color: #2a52be;
+            margin: 0 0 12px 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
         .card p {
-           margin: 0 0 15px 0; /* Closed the tag you left off at */
+            color: #4a4a4a;
+            font-size: 14px;
+            margin: 0 0 20px 0;
             line-height: 1.5;
-            color: #666;
+            flex-grow: 1;
+        }
+        .search-btn {
+            background-color: #2a52be;
+            color: #ffffff;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.2s;
+        }
+        .search-btn:hover {
+            background-color: #1e3f97;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>TUF Digital Resource Center</h1>
-        <h2>Open Access Portal</h2>
+    <div class="resource-container">
+        
+        <h1>The University of Faisalabad (TUF)</h1>
+        <h2>Digital Resource Center</h2>
 
-        <div class="search-box">
-            <label for="search">Search Resources</label>
-            <input type="text" id="search" placeholder="Type keywords, authors, or subjects...">
+        <div class="search-container">
+            <label for="search-topic">Enter Search Topic / Keyword:</label>
+            <input type="text" id="search-topic" placeholder="e.g., Machine Learning, Data Structures, Python...">
         </div>
 
-        <h3>Recent Resources</h3>
 
-        <div class="card">
-            <h4>Introduction to Digital Libraries</h4>
-            <p>A comprehensive guide to understanding the architecture and management of digital library systems in modern educational institutions.</p>
+        <div class="section-title">Research Papers & Journals (Open Access)</div>
+        <div class="card-grid">
+            <div class="card">
+                <h3>ScienceDirect Open Access</h3>
+                <p>Elsevier's premium open access computer science research articles.</p>
+                <button class="search-btn" onclick="performSearch('sciencedirect.com')">Search</button>
+            </div>
+            <div class="card">
+                <h3>Wiley Open Access</h3>
+                <p>Wiley's official gold repository for high-impact computing journals.</p>
+                <button class="search-btn" onclick="performSearch('onlinelibrary.wiley.com')">Search</button>
+            </div>
+            <div class="card">
+                <h3>Emerald Open Access</h3>
+                <p>Peer-reviewed journals focusing on information systems and tech innovations.</p>
+                <button class="search-btn" onclick="performSearch('emerald.com')">Search</button>
+            </div>
+            <div class="card">
+                <h3>arXiv.org (CS)</h3>
+                <p>Largest open e-print repository for AI, ML, and core Computer Science pre-prints.</p>
+                <button class="search-btn" onclick="performSearch('arxiv.org')">Search</button>
+            </div>
+            <div class="card">
+                <h3>DOAJ</h3>
+                <p>Directory of Open Access Journals indexing high-quality tech journals.</p>
+                <button class="search-btn" onclick="performSearch('doaj.org')">Search</button>
+            </div>
         </div>
 
-        <div class="card">
-            <h4>Open Access Journals 2026</h4>
-            <p>A curated directory of peer-reviewed, open-access journals available for student and faculty research.</p>
+
+        <div class="section-title">Free E-Books & Textbooks</div>
+        <div class="card-grid">
+            <div class="card">
+                <h3>O'Reilly Open Books</h3>
+                <p>Curated compilation of open-license classic programming books.</p>
+                <button class="search-btn" onclick="performSearch('oreilly.com')">Search</button>
+            </div>
+            <div class="card">
+                <h3>Bookboon IT Collection</h3>
+                <p>Focused engineering, IT, and coding textbooks written by global professors.</p>
+                <button class="search-btn" onclick="performSearch('bookboon.com')">Search</button>
+            </div>
+            <div class="card">
+                <h3>Wikibooks Computer Science</h3>
+                <p>Community-driven database offering open textbooks on languages and theory.</p>
+                <button class="search-btn" onclick="performSearch('en.wikibooks.org')">Search</button>
+            </div>
+            <div class="card">
+                <h3>Internet Archive Books</h3>
+                <p>Massive digital archive containing foundational computing texts and literature.</p>
+                <button class="search-btn" onclick="performSearch('archive.org')">Search</button>
+            </div>
+            <div class="card">
+                <h3>Open Textbook Library</h3>
+                <p>UMN peer-reviewed open textbook database cataloged by global faculty.</p>
+                <button class="search-btn" onclick="performSearch('open.umn.edu')">Search</button>
+            </div>
+            <div class="card">
+                <h3>OpenStax (CS)</h3>
+                <p>Rice University's free, peer-reviewed textbooks for foundational computing.</p>
+                <button class="search-btn" onclick="performSearch('openstax.org')">Search</button>
+            </div>
+            <div class="card">
+                <h3>LibreTexts CS</h3>
+                <p>Multi-institutional textbook repository covering advanced computing tracks.</p>
+                <button class="search-btn" onclick="performSearch('libretexts.org')">Search</button>
+            </div>
+            <div class="card">
+                <h3>DOAB (Open Books)</h3>
+                <p>Directory of Open Access Books providing peer-reviewed academic monographs.</p>
+                <button class="search-btn" onclick="performSearch('doabooks.org')">Search</button>
+            </div>
+            <div class="card">
+                <h3>SpringerOpen Books</h3>
+                <p>Access points for free digital tech books and scientific series without limits.</p>
+                <button class="search-btn" onclick="performSearch('springeropen.com')">Search</button>
+            </div>
+            <div class="card">
+                <h3>Project Gutenberg</h3>
+                <p>Free digital domain literature containing ancient and foundational tech blueprints.</p>
+                <button class="search-btn" onclick="performSearch('gutenberg.org')">Search</button>
+            </div>
         </div>
+
+
+        <div class="section-title">Academic Search & Learning Initiatives</div>
+        <div class="card-grid">
+            <div class="card">
+                <h3>Open Learning Initiative</h3>
+                <p>Carnegie Mellon's interactive data-driven computer courses.</p>
+                <button class="search-btn" onclick="performSearch('oli.cmu.edu')">Search</button>
+            </div>
+            <div class="card">
+                <h3>Semantic Scholar</h3>
+                <p>AI-powered research tool highlighting structural links between tech topics.</p>
+                <button class="search-btn" onclick="performSearch('semanticscholar.org')">Search</button>
+            </div>
+            <div class="card">
+                <h3>Google Scholar</h3>
+                <p>Standard search portal. Features global open-access academic literature indexing.</p>
+                <button class="search-btn" onclick="performSearch('scholar.google.com')">Search</button>
+            </div>
+            <div class="card">
+                <h3>ResearchGate</h3>
+                <p>Scientific collaboration tool for requesting direct full-texts from authors.</p>
+                <button class="search-btn" onclick="performSearch('researchgate.net')">Search</button>
+            </div>
+        </div>
+
     </div>
 
+    <script>
+        function performSearch(domain) {
+            const keyword = document.getElementById('search-topic').value.trim();
+            if (keyword === "") {
+                window.open("https://" + domain, '_blank');
+            } else {
+                const searchUrl = "https://www.google.com/search?q=site:" + domain + " " + encodeURIComponent(keyword);
+                window.open(searchUrl, '_blank');
+            }
+        }
+    </script>
 </body>
 </html>
